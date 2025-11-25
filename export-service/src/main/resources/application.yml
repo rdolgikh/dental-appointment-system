@@ -1,0 +1,27 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: export-service
+  datasource:
+    url: jdbc:postgresql://postgres:5432/clinic_db
+    username: clinic_user
+    password: clinic_pass
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+export:
+  schedule: "0 0 2 * * MON" # Каждый понедельник в 2:00 AM
+  location: "./exports"
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discovery-service:8761/eureka

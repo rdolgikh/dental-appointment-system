@@ -1,0 +1,34 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: staff-service
+          uri: lb://STAFF-SERVICE
+          predicates:
+            - Path=/api/staff/**
+        - id: patient-service
+          uri: lb://PATIENT-SERVICE
+          predicates:
+            - Path=/api/patients/**
+        - id: appointment-service
+          uri: lb://APPOINTMENT-SERVICE
+          predicates:
+            - Path=/api/appointments/**
+        - id: audit-service
+          uri: lb://AUDIT-SERVICE
+          predicates:
+            - Path=/api/audit/**
+        - id: export-service
+          uri: lb://EXPORT-SERVICE
+          predicates:
+            - Path=/api/export/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka

@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # База данных
   postgres:
@@ -7,8 +5,8 @@ services:
     container_name: clinic-postgres
     environment:
       POSTGRES_DB: clinic_db
-      POSTGRES_USER: clinic_user
-      POSTGRES_PASSWORD: clinic_pass
+      POSTGRES_USER: posrtgres
+      POSTGRES_PASSWORD: postgres
     ports:
       - "5432:5432"
     volumes:
@@ -18,7 +16,9 @@ services:
 
   # Eureka Discovery Server
   discovery-service:
-    build: ./discovery-service
+    build:
+      context: ./discovery-service
+      dockerfile: Dockerfile
     container_name: discovery-service
     ports:
       - "8761:8761"
@@ -31,7 +31,9 @@ services:
 
   # API Gateway
   gateway-service:
-    build: ./gateway-service
+    build:
+      context: ./gateway-service
+      dockerfile: Dockerfile
     container_name: gateway-service
     ports:
       - "8080:8080"
@@ -45,10 +47,10 @@ services:
 
   # Микросервисы
   staff-service:
-    build: ./staff-service
+    build:
+      context: ./staff-service
+      dockerfile: Dockerfile
     container_name: staff-service
-    ports:
-      - "8081:8081"
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-service:8761/eureka
@@ -59,10 +61,10 @@ services:
       - postgres
 
   patient-service:
-    build: ./patient-service
+    build:
+      context: ./patient-service
+      dockerfile: Dockerfile
     container_name: patient-service
-    ports:
-      - "8082:8082"
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-service:8761/eureka
@@ -73,10 +75,10 @@ services:
       - postgres
 
   appointment-service:
-    build: ./appointment-service
+    build:
+      context: ./appointment-service
+      dockerfile: Dockerfile
     container_name: appointment-service
-    ports:
-      - "8083:8083"
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-service:8761/eureka
@@ -87,10 +89,10 @@ services:
       - postgres
 
   audit-service:
-    build: ./audit-service
+    build:
+      context: ./audit-service
+      dockerfile: Dockerfile
     container_name: audit-service
-    ports:
-      - "8084:8084"
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-service:8761/eureka
@@ -101,10 +103,10 @@ services:
       - postgres
 
   export-service:
-    build: ./export-service
+    build:
+      context: ./export-service
+      dockerfile: Dockerfile
     container_name: export-service
-    ports:
-      - "8085:8085"
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-service:8761/eureka

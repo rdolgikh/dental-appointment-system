@@ -9,7 +9,7 @@
     </parent>
 
     <groupId>com.beaverteeth</groupId>
-    <artifactId>staff-service</artifactId>
+    <artifactId>appointment-service</artifactId>
     <version>1.0.0</version>
 
     <properties>

@@ -9,7 +9,7 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.beaverteeth</groupId>
+    <groupId>com.amm</groupId>
     <artifactId>discovery-service</artifactId>
     <version>1.0.0</version>
 
@@ -44,6 +44,13 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

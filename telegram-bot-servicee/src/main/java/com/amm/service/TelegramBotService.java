@@ -66,7 +66,7 @@ public class TelegramBotService extends TelegramLongPollingBot {
                     break;
 
                 case "/info":
-                    response = "🦷 Клиника Beaver Teeth\n" +
+                    response = "🦷 Клиника Зубы Бобра\n" +
                             "Часы работы: Пн-Пт 9:00-20:00\n" +
                             "Адрес: ул. Стоматологическая, 123\n" +
                             "Телефон: +7 (999) 123-45-67\n" +

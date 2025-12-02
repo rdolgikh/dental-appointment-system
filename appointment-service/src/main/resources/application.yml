@@ -3,11 +3,11 @@ server:
 
 spring:
   application:
-    name: staff-service
+    name: appointment-service
   datasource:
     url: jdbc:postgresql://postgres:5432/clinic_db
-    username: clinic_user
-    password: clinic_pass
+    username: postgres
+    password: postgres
   jpa:
     hibernate:
       ddl-auto: update

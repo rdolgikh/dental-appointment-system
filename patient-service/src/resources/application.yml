@@ -1,9 +1,9 @@
 server:
-  port: 8084
+  port: 8081
 
 spring:
   application:
-    name: audit-service
+    name: patient-service
   datasource:
     url: jdbc:postgresql://postgres:5432/clinic_db
     username: postgres

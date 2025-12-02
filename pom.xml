@@ -17,6 +17,7 @@
         <module>appointment-service</module>
         <module>audit-service</module>
         <module>export-service</module>
+        <module>telegram-bot-servicee</module>
     </modules>
 
     <properties>

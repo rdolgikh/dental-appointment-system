@@ -1,0 +1,53 @@
+server:
+  port: 8085
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: TELEGRAM-BOT-SERVICE
+  main:
+    allow-bean-definition-overriding: true
+
+# Telegram Bot Configuration
+telegram:
+  bot:
+    token: ${TELEGRAM_BOT_TOKEN:8551413635:AAE__Em1JBtGHSCfv_dhq9RMjjW-lRY-eoY}
+    username: BeaverTeethClinicBot
+    mode: polling  # polling или webhook
+
+# API Gateway Configuration
+api:
+  gateway:
+    url: http://localhost:8080  # URL вашего API Gateway
+    endpoints:
+      patients: /api/patients
+      appointments: /api/appointments
+      staff: /api/staff
+
+# Eureka Configuration
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+
+# Feign Configuration
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 30000
+        loggerLevel: basic
+
+# Logging
+logging:
+  level:
+    com.amm.telegrambot: DEBUG
+    org.springframework.web: INFO
+    feign: DEBUG

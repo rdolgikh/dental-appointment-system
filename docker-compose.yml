@@ -45,6 +45,25 @@ services:
     depends_on:
       - discovery-service
 
+telegram-bot-service:
+  build: ./telegram-bot-service
+  container_name: telegram-bot-service
+  ports:
+    - "8085:8085"
+  environment:
+    - SPRING_PROFILES_ACTIVE=docker
+    - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+    - API_GATEWAY_URL=http://api-gateway:8080
+    - EUREKA_SERVER=http://eureka-server:8761/eureka
+  depends_on:
+    api-gateway:
+      condition: service_healthy
+  networks:
+    - beaverteeth-network
+  restart: unless-stopped
+  volumes:
+    - ./logs/telegram-bot:/app/logs
+
   # Микросервисы
   staff-service:
     build:
